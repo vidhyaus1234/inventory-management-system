@@ -1,0 +1,25 @@
+{% extends 'apps/base.html' %}
+
+{% block content %}
+
+<h2>Add / Edit Category</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Save
+    </button>
+
+</form>
+
+<br>
+
+<a href="{% url 'category_list' %}">
+    Back
+</a>
+
+{% endblock %}

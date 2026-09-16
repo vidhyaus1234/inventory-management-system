@@ -1,0 +1,57 @@
+{% extends 'apps/base.html' %}
+
+{% block content %}
+
+<h2>Category List</h2>
+
+<a href="{% url 'category_create' %}">
+    Add Category
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for category in categories %}
+
+    <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+
+        <td>
+
+            <a href="{% url 'category_update' category.id %}">
+                Edit
+            </a>
+
+            |
+
+            <a href="{% url 'category_delete' category.id %}">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="4">
+            No categories found.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

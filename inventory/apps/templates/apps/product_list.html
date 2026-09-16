@@ -1,0 +1,60 @@
+{% extends 'apps/base.html' %}
+
+{% block content %}
+
+<h2>Product List</h2>
+
+<a href="{% url 'product_create' %}">
+    Add Product
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for product in products %}
+
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.sku }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.quantity }}</td>
+
+        <td>
+            <a href="{% url 'product_update' product.id %}">
+                Edit
+            </a>
+
+            |
+
+            <a href="{% url 'product_delete' product.id %}">
+                Delete
+            </a>
+        </td>
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="7">
+            No products found.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

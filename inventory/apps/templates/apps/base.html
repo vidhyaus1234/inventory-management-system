@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management</title>
+
+    <link rel="stylesheet" href="{% static 'apps/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Inventory Management System</h1>
+
+    <a href="{% url 'category_list' %}">
+        Categories
+    </a>
+
+    |
+
+    <a href="{% url 'product_list' %}">
+        Products
+    </a>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
